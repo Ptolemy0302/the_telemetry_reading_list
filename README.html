@@ -306,7 +306,7 @@ List of papers about the telemetry in 2020.
 </p>
 </div>
 
-<li><a id="orgf8b055f"></a>Zhou et al.: <b><a href="http://doi.acm.org/10.1145/1355734.1355746">Flow Event Telemetry on Programmable Data Plane</a></b>, <i>ACM SIGCOMM</i>, 2020.<br />
+<li><a id="orgf8b055f"></a>Zhou et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">Flow Event Telemetry on Programmable Data Plane</a></b>, <i>ACM SIGCOMM</i>, 2020.<br />
 <div class="outline-text-5" id="text-orgf8b055f">
 <pre class="example">
 RELEVANCE: unknown
@@ -321,6 +321,210 @@ It has a high coverage on flow events including inter-switch packet drop/corrupt
 with novel intra- and inter-switch event detection algorithms running on data plane; NetSeer also achieves high scalability and accuracy with innovative designs 
 of event aggregation, information compression, and message batching that mainly run on data plane, using switch CPU as complement. NetSeer has been implemented 
 on commodity programmable switches and NICs. With real case studies and extensive experiments, we show NetSeer can reduce NPA mitigation time by 61%-99% with only 0.01% overhead of monitoring traffic.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Basat et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">PINT: Probabilistic In-band Network Telemetry</a></b>, <i>ACM SIGCOMM</i>, 2020.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Commodity network devices support adding in-band telemetry measurements into data packets, enabling a wide range of applications, 
+including network troubleshooting, congestion control, and path tracing. However, including such information on packets adds significant overhead 
+that impacts both flow completion times and application-level performance. 
+We introduce PINT, an in-band network telemetry framework that bounds the amount of information added to each packet.  
+PINT encodes the requested data on multiple packets, allowing per-packet overhead limits that can be as low as one bit. 
+We analyze PINT and prove performance bounds, including cases when multiple queries are running simultaneously. 
+PINT is implemented in P4 and can be deployed on network devices.Using real topologies and traffic characteristics, 
+we show that PINT concurrently enables applications such as congestion control, path tracing, and computing tail latencies, 
+using only sixteen bits per packet, with perfoHuangrmance comparable to the state of the art.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Huang et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">OmniMon: Re-architecting Network Telemetry with Resource Efficiency and Full Accuracy</a></b>, <i>ACM SIGCOMM</i>, 2020.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Network telemetry is essential for administrators to monitor massive data traffic in a network-wide manner. 
+Existing telemetry solutions often face the dilemma between resource efficiency (i.e., low CPU, memory, 
+and bandwidth overhead) and full accuracy (i.e., error-free and holistic measurement). We 
+break this dilemma via a network-wide architectural design OmniMon, which simultaneously achieves 
+resource efficiency and full accuracy in flow-level telemetry for large-scale data centers. OmniMon 
+carefully coordinates the collaboration among different types of entities in the whole network to execute telemetry operations, 
+such that the resource constraints of each entity are satisfied without compromising full accuracy. It further addresses consistency 
+in network-wide epoch synchronization and accountability in error-free packet loss inference. We prototype OmniMon in DPDK and P4. 
+Testbed experiments on commodity servers and Tofino switches demonstrate the effectiveness of OmniMon over state-of-the-art telemetry designs.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Luo et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">Understanding, Detecting and Localizing Partial Failures in Large System Software</a></b>, <i>NSDI</i>, 2020.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Partial failures occur frequently in cloud systems and can cause serious damage including inconsistency and data loss. 
+Unfortunately, these failures are not well understood. Nor can they be effectively detected. 
+In this paper, we first study 100 real-world partial failures from five mature systems to understand their characteristics. 
+We find that these failures are caused by a variety of defects that require the unique conditions of the production environment to be triggered. 
+Manually writing effective detectors to systematically detect such failures is both time-consuming and error-prone. We thus propose OmegaGen, 
+a static analysis tool that automatically generates customized watchdogs for a given program by using a novel program reduction technique. 
+We have successfully applied OmegaGen to six large distributed systems. In evaluating 22 real-world partial failure cases in these systems, 
+the generated watchdogs can detect 20 cases with a median detection time of 4.2 seconds, and pinpoint the failure scope for 18 cases. 
+The generated watchdogs also expose an unknown, confirmed partial failure bug in the latest version of ZooKeeper.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Lin et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">NetView: Towards On-Demand Network-Wide Telemetry in the Data Center</a></b>, <i>ICC</i>, 2020.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Network telemetry is to collect information (e.g., hop latency, throughput) from network devices. 
+Network-wide telemetry is critical for operators to understand the quality of network performance and to diagnose on-going failures. 
+The state-of-the-art telemetry approaches are far from ideal as they are unable to fully satisfy diverse requirements of operators, 
+specifically for on-demand, full coverage, and scalable telemetry.
+
+In this paper, we provide a new framework of network telemetry for data center networks, 
+called NetView. NetView can support various telemetry applications and telemetry frequencies on demand, 
+monitoring each device via proactively sending dedicated probes while only one vantage server is required. 
+Technically, NetView divides the probe into a forwarding stack and a telemetry stack, which are respectively responsible for flexible forwarding and network status monitoring, 
+achieving full coverage and visibility. Besides, a series of probe generation algorithms and update algorithms largely reduce probe number, providing high scalability. 
+The evaluation shows that NetView reduces the bandwidth occupancy by more than two orders of magnitude compared with Pingmesh and INT-path, and conducts network-wide 
+telemetry for the data center network with thousands of switches using only one vantage server, without bringing about resources bottleneck.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Parizotto et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/9148954">ShadowFS: Speeding-up Data Plane Monitoring and Telemetry using P4</a></b>, <i>ICC</i>, 2020.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Programmable Data Planes (PDPs) provide software abstractions for network operators to dynamically modify the data plane behavior. 
+This behavior can be described in specification languages, such as P4, and deployed into programmable switches our routers. 
+The degree of innovation enabled by PDPs allowed network operators to create new protocols and applications. 
+Despite the high degree of innovation brought to data plane packet processing, this programmability may 
+have a negative effect on the forwarding delay and update times of flow tables. Previous works have attempted to overcome these limitations, e.g., 
+through caching mechanisms, however they do not provide efficient replacement primitives and incur large overhead for monitored traffic. 
+In this paper we present the design and evaluation of ShadowFS, a system to speed-up monitoring and telemetry on the data plane. 
+ShadowFS manages the replacement of table entries using smaller caches without requiring the programmer to specify the behavior of these tables or how to steer 
+traffic through them. Different from previous work, ShadowFS builds a new data plane program that monitors flows and replaces rules between tables automatically. 
+Evaluation results demonstrate that ShadowFS can increase the throughput of frequently monitored flows.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Karaagac et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/9148954">In-Band Network Telemetry in Industrial Wireless Sensor Networks</a></b>, <i>IEEE TWC</i>, 2020.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+With the emergence of the Internet of Things (IoT) and Industry 4.0 concepts, industrial 
+applications are going through a tremendous change that is imposing increasingly diverse and demanding network dynamics 
+and requirements with a wider and more fine-grained scale. Therefore, there is a growing need for more flexible and reconfigurable industrial 
+networking solutions complemented with powerful monitoring and management functionalities. In this sense, this paper presents a novel efficient 
+network monitoring and telemetry solution for Industrial Wireless Sensor Networks mainly focusing on the 6TiSCH Network stack, a complete protocol 
+stack for ultra-reliable ultra-low-power wireless mesh networks. The proposed monitoring solution creates a flexible and powerful in-band 
+network telemetry design with minimized resource consumption and communication overhead while supporting a wide range of monitoring 
+operations and strategies for dealing with various network scenarios and use cases. Besides, the technical capabilities and characteristics 
+of the proposed solution are evaluated via a real-life implementation, practical and theoretical analysis. These experiments demonstrate 
+that in-band telemetry can provide ultra-efficient network monitoring operations without any effect on the network behavior and performance, 
+validating its suitability for Industrial Wireless Sensor Networks.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Tang et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/9148954">Sel-INT: A Runtime-Programmable Selective In-Band Network Telemetry System</a></b>, <i>IEEE TWC</i>, 2020.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+It is known that by leveraging programmable data plane, in-band network telemetry (INT) can be realized 
+to provide a powerful and promising method to collect realtime network statistics for monitoring and troubleshooting. 
+However, existing INT implementations still exhibit a few drawbacks such as lack of runtime-programmability and relatively high 
+overheads due to per-packet operation. In this work, we propose and design a runtime-programmable selective INT system, namely, 
+Sel-INT, to resolve these issues. Specifically, we first design a runtime-programmable selective INT scheme based on protocol 
+oblivious forwarding (POF), and then prototype our design by extending the famous OpenvSwitch (OVS) platform to obtain a software 
+switch that supports Sel-INT and implementing a Data Analyzer to parse, extract and analyze the INT data. Our implementation of 
+Sel-INT is verified and evaluated in a real network testbed that consists of a few stand-alone software switches. The experimental 
+results demonstrate that Sel-INT can not only adjust the sampling rate of INT in runtime but also program the corresponding data types dynamically, 
+and they also confirm that our proposal can ensure proper accuracy and timeliness for network monitoring while greatly reducing the overheads of INT.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Detti et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/9120278">Sub-linear Scalability of MQTT Clusters in Topic-based Publish-subscribe Applications</a></b>, <i>IEEE TWC</i>, 2020.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Message Queuing Telemetry Transport (MQTT) is a widespread protocol for topic-based publish-subscribe architectures supporting IoT 
+and social networks applications. MQTT brokers are logical entities that couple publishers and subscribers and play a critical 
+role in such architectures. MQTT brokers can be implemented either as standalone servers or in a cluster configuration. Clusters 
+of brokers increase reliability, availability and overall performance, since operations can be highly parallelized among the brokers 
+that form the cluster. The load-balancing strategy in a cluster usually consists in connecting an incoming client to a randomly 
+selected broker. This random-attach strategy, it is very simple, but generates a significant amount of inter-broker traffic, as 
+we demonstrate through theoretical and experimental evaluations. Inter-broker traffic is an overhead for the system and it increases 
+the CPU load of the brokers, compromising the scaling behavior of the whole cluster. Indeed, we found that a linear increase of the number 
+of brokers forming a cluster does not necessarily provide an equivalent linear gain in performance, and such a scaling penalty can be surprisingly 
+significant, in the order of 40%. To solve this issue and improve performance, we propose a novel load-balancing strategy that envisages 
+the use of multiple MQTT sessions per client to reduce inter-broker traffic and that can be implemented by means of a greedy algorithm. 
+We show feasibility and effectiveness of our strategy for IoT and social-network applications by means of simulations and real measurements. 
+The resulting scaling penalty is reduced to 10%.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Miguel et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/9151987">DevOps for IoT Systems: Fast & Continuous Monitoring Feedback of System Availability</a></b>, <i>IEEE Internet of Things Journal</i>, 2020.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Current Internet of Things (IoT) systems are highly distributed systems, which integrate cloud, fog, 
+and edge computing approaches. Accelerating their maintenance and continuous improvement, while ensuring their availability, 
+is complex. DevOps promotes fast and continuous feedback from operations to development to detect problems before customers 
+are impacted, among other benefits. However, there is not any formal definition about how to do this. This paper defines 
+the “fast and continuous monitoring feedback of system availability” activity (F&CF availability) that supports automatic 
+and continuous monitoring feedback from operations to development of IoT system availability. This activity has been formalized 
+through the software and systems process engineering metamodel (SPEM). Its implementation is demonstrated in a real scenario 
+that provides evidence that the formalization of the F&CF availability activity helps teams in better diagnosing and fixing outage problems. 
+The result is a distributed and configurable monitoring component developed through code (Monitoring as Code, MaC). This component is embedded 
+in the IoT infrastructure. MaC enables DevOps team to configure their own metrics and indicators at run time, i.e. monitoring on demand. 
+The formalization of this activity, based on a MaC technique, enables the automation, versioning, and replication of monitoring elements.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Zhou et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/9060873">HyperSight: Towards Scalable, High-Coverage, and Dynamic Network Monitoring Queries</a></b>, <i>IEEE Internet of Things Journal</i>, 2020.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Performing fine-grained and real-time network monitoring is the core logic of various data center operation applications, 
+such as traffic engineering, network troubleshooting, and anomaly detecting. 
+However, the state-of-the-art network monitoring solutions either fall short of completely detecting all network incidents (i.e., congestion), yielding limited monitoring coverage, 
+or introduce large overheads, yielding limited scalability. In this paper, we present HyperSight, a network traffic monitor with both high coverage and low overheads. 
+The key idea of HyperSight is to monitor networks at the behavior level via tracking packet behavior changes. HyperSight proposes three designs for behavior-level monitoring. 
+First, to facilitate expressing various network monitoring tasks, HyperSight presents a declarative query language based on the streaming processing model. 
+Second, HyperSight proposes Bloom Filter Queue (BFQ), a memory-efficient algorithm to empower in-network capability for monitoring packet behavior changes. 
+BFQ can be implemented on commodity programmable switches. Third, to support dynamic deployment and execution of packet behavior change monitoring tasks without interrupting on-service switches, 
+HyperSight proposes virtual BFQ to support dynamic query compilation. We build a prototype of HyperSight and deploy it on commodity programmable switches. 
+Evaluation results show that HyperSight supports a wide range of network event queries and can monitor over 99% packet behavior changes while keeping remarkably low overheads.
 </p>
 </div>
 </li>
@@ -335,21 +539,158 @@ List of papers about the telemetry in 2019.
 </p>
 </div>
 
-<li><a id="orgf8b055f"></a>Zhou et al.: <b><a href="http://doi.acm.org/10.1145/1355734.1355746">Flow Event Telemetry on Programmable Data Plane</a></b>, <i>ACM SIGCOMM</i>, 2020.<br />
+<li><a id="orgf8b055f"></a>Li et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">HPCC: high precision congestion control</a></b>, <i>ACM SIGCOMM</i>, 2019.<br />
 <div class="outline-text-5" id="text-orgf8b055f">
 <pre class="example">
 RELEVANCE: unknown
 </pre>
 <p>
-Network performance anomalies (NPAs), e.g. long-tailed latency, bandwidth decline, etc., are increasingly crucial to cloud providers as applications are getting more sensitive to performance. 
-The fundamental difficulty to quickly mitigate NPAs lies in the limitations of state-of-the-art network monitoring solutions --- coarse-grained counters, active probing, or packet telemetry 
-either cannot provide enough insights on flows or incur too much overhead. This paper presents NetSeer, a flow event telemetry (FET) monitor which aims to discover and record 
-all performance-critical data plane events, e.g. 
-packet drops, congestion, path change, and packet pause. NetSeer is efficiently realized on the programmable data plane. 
-It has a high coverage on flow events including inter-switch packet drop/corruption which is critical but also challenging to retrieve the original flow information, 
-with novel intra- and inter-switch event detection algorithms running on data plane; NetSeer also achieves high scalability and accuracy with innovative designs 
-of event aggregation, information compression, and message batching that mainly run on data plane, using switch CPU as complement. NetSeer has been implemented 
-on commodity programmable switches and NICs. With real case studies and extensive experiments, we show NetSeer can reduce NPA mitigation time by 61%-99% with only 0.01% overhead of monitoring traffic.
+Congestion control (CC) is the key to achieving ultra-low latency, high bandwidth and network stability in high-speed networks. 
+From years of experience operating large-scale and high-speed RDMA networks, we find the existing high-speed CC schemes 
+have inherent limitations for reaching these goals. In this paper, we present HPCC (High Precision Congestion Control), 
+a new high-speed CC mechanism which achieves the three goals simultaneously. HPCC leverages in-network telemetry (INT) 
+to obtain precise link load information and controls traffic precisely. By addressing challenges such as delayed 
+INT information during congestion and overreaction to INT information, HPCC can quickly converge to utilize free bandwidth while avoiding 
+congestion, and can maintain near-zero in-network queues for ultra-low latency. HPCC is also fair and easy to deploy in hardware. 
+We implement HPCC with commodity programmable NICs and switches. In our evaluation, compared to DCQCN and TIMELY, 
+HPCC shortens flow completion times by up to 95%, causing little congestion even under large-scale incasts.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Yu et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">Network telemetry: towards a top-down approach</a></b>, <i>ACM SIGCOMM</i>, 2019.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Network telemetry is about understanding what is happening in the current network. 
+It serves as the basis for making a variety of management decisions for improving the performance, availability, 
+security, and efficiency of networks. However, it is challenging to build real-time and fine-grained network telemetry systems because of the 
+need to support a variety of measurement queries, handle a large amount of traffic for large networks, while staying within the resource constraints 
+at hosts and switches. Today, most operators take a bottom-up approach by passively collecting data from individual devices and infer the network-wide 
+information they need. They are often limited by the monitoring tools device vendors provide and find it hard to extract useful information. 
+In this paper, we argue for a top-down approach: We should provide a high-level declarative abstraction for operators to specify measurement queries, 
+programmable measurement primitives at switches and hosts, and a runtime that translates the high-level queries into low-level API calls. 
+We discuss a few recent works taking this top-down approach and call for more research in this direction.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Lu et al.: <b><a href="https://dl.acm.org/doi/abs/10.1145/3342280.3342292">iFIT: Intelligent Flow Information Telemetry</a></b>, <i>ACM SIGCOMM</i>, 2019.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Comming soon... 
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>An et al.: <b><a href="https://dl.acm.org/doi/abs/10.1145/3300061.3343396">Poster: Protecting Control Planes in In-Band Software-Defined Wireless Networks</a></b>, <i>MOBICOM</i>, 2019.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Software-defined networking (SDN) is a mechanism that decouples a control plane from a network to manage the data plane of the network 
+flexibly in a centralized view. In in-band-based software-defined wireless networks (IB-SDWNs), the control plane shares wireless channels with 
+the data plane. As the amount of data-plane traffic increases, the interference from the data plane to the control plane becomes stronger, and 
+the switches connected to the SDN controller via the control plane may become out-of-control. In this paper, we propose an interference management 
+scheme that reduces the interference among control and data planes by adjusting the transmission rates of data-plane traffic in switches to ensure 
+reliable connections between the SDN controller and switches. 
+We implemented a prototype of an IB-SDWN and showed that the proposed interference management scheme ensures the reliability of control planes.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Wang et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/9013581">A Bandwidth-Efficient INT System for Tracking the Rules Matched by the Packets of a Flow</a></b>, <i>GLOBECOM</i>, 2019.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Tracking the rules matched by the packets of a flow when they traverse multiple switches in a network is very important and useful. 
+In this paper, we design and implement a bandwidth- efficient In-Band Network Telemetry (INT) system that can track the rules matched by 
+the packets of a flow in real time or in the past. We have evaluated the real performance of our system on a testbed composed of several 
+hardware P4 switches. Our experimental results show that the system works correctly and its traffic reduction scheme can reduce the rate of generated INT reports by a factor of 39, 394, 2,055, 
+or even up to 12,500, depending on the type of network states monitored and the threshold used to filter out less important INT reports.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Cociglio et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">Multipoint Passive Monitoring in Packet Networks</a></b>, <i>IEEE TON</i>, 2019.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Traffic monitoring is essential to manage large networks and validate Service Level Agreements. 
+Passive monitoring is particularly valuable to promptly identify transient fault episodes and react in a timely manner. 
+This article proposes a novel, non-invasive and flexible method to passively monitor large backbone networks. 
+By using only packet counters, commonly available on existing hardware, we can accurately measure packet losses, 
+in different segments of the network, affecting only specific flows. We can monitor not only end-to-end flows, but any generic 
+flow with packets following several different paths in the network (multipoint flows). We also sketch a possible extension of the 
+method to measure average one-way delay for multipoint flows, provided that the measurement points are synchronized. 
+Through various experiments we show that the method is effective and enables easy zooming in on the cause of packet losses. 
+Moreover, the method can scale to very large networks with a very low overhead on the data plane and the management plane.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Haxhibeqin et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/9012678">Low Overhead, Fine-grained End-to-end Monitoring of Wireless Networks using In-band Telemetry</a></b>, <i>CNSM</i>, 2019.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Wireless networks are becoming more complex while applications on top are becoming more demanding. 
+To maintain network performance in terms of latencythroughput and reliability, continuous verification of the performance, 
+possibly followed by on-the-fly network (re)configuration is needed. To achieve this, the way wireless network monitoring is being 
+done needs to be reconsidered and should evolve towards more timely, low overhead and fine-grained monitoring. 
+This paper shows how in-band network telemetry (INT) monitoring can achieve these objectives. An INT-enabled node architecture is designed as well as noyel INT options. 
+By means of an implementation on WiFi Linux devices, the concept is validated by tracking the behavior of a real network.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Pan et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">INT-path: Towards Optimal Path Planning for In-band Network-Wide Telemetry</a></b>, <i>INFOCOM</i>, 2019.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+With the ever-increasing complexity of networks, fine-grained network monitoring enables better network reliability and timely feedback control. 
+The In-band Network Telemetry (INT) allows cost-effective network monitoring by encapsulating device-internal states into probe packets. 
+However, INT only specifies an underlying device-level primitive while how to achieve network-wide traffic monitoring remains undefined. 
+In this work, we propose INT-path, a network-wide telemetry framework, by decoupling the system into a routing mechanism and a routing path generation policy. 
+Specifically, we embed source routing into INT probes to allow specifying the route the probe packet takes through the network. 
+Above the mechanism, we develop an Euler trail-based path planning policy to generate non-overlapped INT paths that cover the entire network with a minimum path number. 
+Besides, an exhaustive analysis of algorithm’s run-time complexity is also provided. 
+INT-path can “encode” the network-wide traffic status into a series of “bitmap images”, transforming network troubleshooting into pattern recognition problems. 
+INT-path is very suitable for deployment in data center networks thanks to their symmetric network topologies.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Bhamare et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">IntOpt: In-band Network Telemetry Optimization for NFV Service Chain Monitoring</a></b>, <i>ICC</i>, 2019.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Managing and scaling virtual network function (VNF) service chains require the collection and analysis of network statistics and states in real time. 
+Existing network function virtualization (NFV) monitoring frameworks either do not have the capabilities to express the range of telemetry items needed 
+to perform management or do not scale to large traffic volumes and rates. We present IntOpt, a scalable and expressive telemetry 
+system designed for flexible VNF service chain network monitoring using active probing. IntOpt allows to specify monitoring requirements for individual 
+service chain, which are mapped to telemetry item collection jobs that fetch the required telemetry items from P4 (programming protocol-independent packet processors) 
+programmable dataplane elements. In our approach, the SDN controller creates the minimal number of monitoring flows to monitor the deployed service 
+chains as per their telemetry demands in the network. We propose a simulated annealing based random greedy metaheuristic (SARG) to 
+minimize the overhead due to active probing and collection of telemetry items. Using P4-FPGA, we benchmark the overhead for telemetry 
+collection and compare our simulated annealing based approach with a naive approach while optimally deploying telemetry collection probes. 
+Our numerical evaluation shows that the proposed approach can reduce the monitoring overhead by 39% and the total delays by 57%. 
+Such optimization may as well enable existing expressive monitoring frameworks to scale for larger real-time networks.
 </p>
 </div>
 </li>
@@ -364,24 +705,163 @@ List of papers about the telemetry in 2018.
 </p>
 </div>
 
-<li><a id="orgf8b055f"></a>Zhou et al.: <b><a href="http://doi.acm.org/10.1145/1355734.1355746">Flow Event Telemetry on Programmable Data Plane</a></b>, <i>ACM SIGCOMM</i>, 2020.<br />
+<li><a id="orgf8b055f"></a>Gupta et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">Sonata: Query-Driven Streaming Network Telemetry</a></b>, <i>ACM SIGCOMM</i>, 2018.<br />
 <div class="outline-text-5" id="text-orgf8b055f">
 <pre class="example">
 RELEVANCE: unknown
 </pre>
 <p>
-Network performance anomalies (NPAs), e.g. long-tailed latency, bandwidth decline, etc., are increasingly crucial to cloud providers as applications are getting more sensitive to performance. 
-The fundamental difficulty to quickly mitigate NPAs lies in the limitations of state-of-the-art network monitoring solutions --- coarse-grained counters, active probing, or packet telemetry 
-either cannot provide enough insights on flows or incur too much overhead. This paper presents NetSeer, a flow event telemetry (FET) monitor which aims to discover and record 
-all performance-critical data plane events, e.g. 
-packet drops, congestion, path change, and packet pause. NetSeer is efficiently realized on the programmable data plane. 
-It has a high coverage on flow events including inter-switch packet drop/corruption which is critical but also challenging to retrieve the original flow information, 
-with novel intra- and inter-switch event detection algorithms running on data plane; NetSeer also achieves high scalability and accuracy with innovative designs 
-of event aggregation, information compression, and message batching that mainly run on data plane, using switch CPU as complement. NetSeer has been implemented 
-on commodity programmable switches and NICs. With real case studies and extensive experiments, we show NetSeer can reduce NPA mitigation time by 61%-99% with only 0.01% overhead of monitoring traffic.
+Managing and securing networks requires collecting and analyzing network traffic data in real time. 
+Existing telemetry systems do not allow operators to express the range of queries needed to perform management or scale to large traffic volumes and rates. 
+We present Sonata, an expressive and scalable telemetry system that coordinates joint collection and analysis of network traffic. 
+Sonata provides a declarative interface to express queries for a wide range of common telemetry tasks; to enable real-time execution, 
+Sonata partitions each query across the stream processor and the data plane, running as much of the query as it can on the network switch, at line rate. 
+To optimize the use of limited switch memory, Sonata dynamically refines each query to ensure that available resources focus only on traffic that satisfies the query. 
+Our evaluation shows that Sonata can support a wide range of telemetry tasks while reducing the workload for the stream processor by as much as seven orders of magnitude compared to existing telemetry systems.
 </p>
 </div>
 </li>
+
+<li><a id="orgf8b055f"></a>Zhou et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">Highly Compact Virtual Active Counters for Per-flow Traffic Measurement</a></b>, <i>INFOCOM</i>, 2018.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Per-flow traffic measurement is a fundamental problem in the era of big network data, and has been widely used in many applications, 
+including capacity planning, anomaly detection, load balancing, traffic engineering, etc. In order to keep up with the line speed of modern network devices (e.g., routers), 
+per-flow measurement online module is often implemented by using on-chip cache memory (such as SRAM) to minimize per-packet processing time, 
+but on-chip SRAM is expensive and limited in size, which poses a major challenge for traffic measurement. In response, much recent research is geared towards 
+designing highly compact data structures for approximate estimation that can provide probabilistic guarantees for per-flow measurement. 
+The state of art, called Counter Tree (CT), requires at least 2 bits per flow in memory consumption and more than 2 memory accesses per packet in processing time. 
+In this paper, we propose a novel design of a highly compact and efficient counter architecture, called Virtual Active Counter estimation (VAC), which 
+achieves faster processing speed (slightly more than 1 memory access per packet on average) and provides more accurate measurement results than CT under the same allocated memory. 
+Moreover, VAC can perform well even with a very tight memory space (less than 1 bit per flow or even one fifth of a bit per flow). 
+Theoretical analysis and experiments based on real network traces demonstrate the superior performance of VAC.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Liu et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/8526824/">NetVision: Towards Network Telemetry as a Service</a></b>, <i>ICMP</i>, 2018.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+In-band Network Telemetry (INT) can provide fine-grained and accurate device-level telemetry metrics. Nonetheless, 
+INT can track only a small ratio of devices and links and embedding telemetry data into normal packets brings high overhead and high operation complexity. 
+Hence, we present NetVision, a powerful proactive network telemetry platform with high coverage and high scalability.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Anand et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/8422785">POINT: An Intent-Driven Framework for Integrated Packet-Optical In-Band Network Telemetry</a></b>, <i>ICC</i>, 2018.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Emerging packet-optical networks have exposed flexibility and scalability limitations of current network telemetry mechanisms. 
+Recent work in packet networks has explored the possibility of improving network telemetry for devices that have programmable data planes with encouraging results. 
+Extending those mechanisms into optical networks, however, is far from straightforward due to factors such as layering and presence of devices that do not process packets. 
+We introduce a framework that overcomes those challenges for packet-optical networks with constructs to unify telemetry across packet and optical network segments. 
+We demonstrate the utility of the proposed framework with an implementation of use-case examples in packet-optical network telemetry.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Du et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/8422430">Two-Stage Adaptive Bloom Filters for Per-Flow Monitoring in Software Defined Networks</a></b>, <i>ICC</i>, 2018.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Per-flow monitoring attracts great attention for its importance in networks. Thus a two-stage Bloom Filter is proposed for it. 
+However, without considering the scalability of the two-stage Bloom Filter to different probability distributions of target flows' monitoring action types with high probability deviations, 
+it leads to some serious problems, such as high false positive rate or low resource utilization. 
+Therefore we propose the two-stage adaptive Bloom Filters that are operated collaboratively in network-wide range in software defined networks. 
+The Bloom Filter supports dynamic mappings from the pre-undetermined action types of its constituent Bloom Filters to specific ones and adjustable number of the constituent Bloom Filters. 
+This proposal has two major advantages: 1) false positive rate can be kept under a threshold in the different probability distributions; 
+2) resource utilization and rejection probability can be significantly improved at low cost of increasing the threshold. We analyze and discuss the two-stage adaptive Bloom Filters 
+from false positive rate, resource utilization and rejection probability. 
+The results from our simulation based on real-life network topology agree with our analysis and discussion.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Tu et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">INTCollector: A High-performance Collector for In-band Network Telemetry</a></b>, <i>CNSM</i>, 2018.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+In Software-Defined Networking (SDN), monitoring is an essential function to provide information about the network and help the SDN controller to make network controlling decisions. 
+In-band Network Telemetry (INT) is a method that can provide real-time, fine-grained, and end-to-end network monitoring. INT works by embedding network information into every packet. 
+At the final switch in the path, INT extracts network information into report packets and sends the reports to a collector. 
+However, the huge amount of data from INT requires high processing capability of the collector.We present the design and implementation of INTCollector, 
+a high performance collector for INT. We propose a mechanism to extract important network information, called event, from INT raw data. 
+The mechanism filters network events, reduces the number of metric values that need to be stored, reduces CPU usage and storage cost while still ensuring to capture and store all important network information. 
+INTCollector has two processing flows: a fast path to process INT report packets, and a normal path to process events and store metric values into a database. 
+The fast path is accelerated by eXpress Data Path (XDP) -a Linux in-kernel fast packet processing framework. Our calculation shows that event detection can massively reduce 
+the amount of data need to be stored (two to three orders of magnitude in our test scenario). 
+The evaluation shows that INTCollector can process INT reports at the rate of 1.2 Mpps with 8% of CPU when running with software NIC. We expect better result can be achieved with XDP supported hardware NICs.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Moraney et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/8584961">On the Practical Detection of the Top-k Flows</a></b>, <i>CNSM</i>, 2018.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Monitoring network traffic is an important building block for various management and security systems. 
+In typical settings, the number of active flows in a network node is much larger than the number of available monitoring resources and there is 
+no practical way to maintain per-flow state at the node. This situation gave rise to the recent interest in streaming algorithms where complex data structures are 
+used to perform monitoring tasks like identifying the top-k flows using a constant amount of memory. However, these solutions require complicated per-packet operations, 
+which are not feasible in current hardware or software network nodes. In this paper, we take a different approach to this problem and study the ability to perform monitoring tasks using 
+efficient built-in counters available in current network devices. We show that by applying non-trivial control algorithms that change the filter assignments of these built-in 
+counters at a fixed time interval, regardless of packet arrival rate, we can get accurate monitoring information. We provide an analytical study of the top-k flows problem 
+and show, using extensive emulation over recent real traffic, 
+that our algorithm can perform at least as well as the best-known streaming algorithms without using complex data structure or performing expensive per-packet operations.
+</p>
+</div>``
+</li>
+
+<li><a id="orgf8b055f"></a>Gao et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/8476223">UniROPE: Universal and Robust Packet Trajectory Tracing for Software-Defined Networks</a></b>, <i>TOM</i>, 2018.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Knowing the trajectory of each packet in a network enables a large range of network debugging and management tasks. 
+Existing packet trajectory tracing approaches for software-defined networking SDN either require high message/computational overhead or only focus on one kind of network topology. 
+In this paper, we propose UniROPE, a robust and lightweight packet trajectory tracing approach that supports various network topologies. Using the flow information, 
+UniROPE dynamically selects one of the two proposed packet trajectory tracing algorithms to achieve a better tradeoff between accuracy and efficiency. 
+We implement UniROPE using P4, a high-level language for programming SDN switch operations, and evaluate its performance in networks with different topologies, 
+scales, and link failure probabilities. Results show that UniROPE achieves a high successful ratio of packet trajectory tracing with small message/computational overheads in various networks. 
+We also use three case studies to show the effectiveness of the traced packet trajectory information for network debugging and management.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Ugolini et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/8286948">Next Generation High-Rate Telemetry</a></b>, <i>IEEE JSAC</i>, 2018.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Recent investigations show that high-rate telemetry systems, based on the CCSDS 131.2-B-1 standard and employed in Earth observation missions, 
+do not fully exploit the available capacity. Thus, we propose and discuss possible ways to improve the data return of these systems that can be considered 
+for a revision of the current standard. Some of them are represented by a revision and/or an extension of the currently adopted modulation and coding formats. 
+The remaining techniques are related to an enhancement of the transceiver architecture. Different bandwidth allocation strategies are also considered. 
+The benefits of the proposed techniques are assessed by means of computer simulations with reference to a realistic scenario where a real non-linear amplifier, 
+real filters, and real impairments are considered.
+</p>
+</div>
+</li>
+
+
 
 </div>
 
@@ -393,7 +873,7 @@ List of papers about the telemetry in 2017.
 </p>
 </div>
 
-<li><a id="orgf8b055f"></a>Zhou et al.: <b><a href="http://doi.acm.org/10.1145/1355734.1355746">Flow Event Telemetry on Programmable Data Plane</a></b>, <i>ACM SIGCOMM</i>, 2020.<br />
+<li><a id="orgf8b055f"></a>Zhou et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">Flow Event Telemetry on Programmable Data Plane</a></b>, <i>ACM SIGCOMM</i>, 2016.<br />
 <div class="outline-text-5" id="text-orgf8b055f">
 <pre class="example">
 RELEVANCE: unknown
@@ -422,21 +902,37 @@ List of papers about the telemetry in 2016.
 </p>
 </div>
 
-<li><a id="orgf8b055f"></a>Zhou et al.: <b><a href="http://doi.acm.org/10.1145/1355734.1355746">Flow Event Telemetry on Programmable Data Plane</a></b>, <i>ACM SIGCOMM</i>, 2020.<br />
+<li><a id="orgf8b055f"></a>McGrew et al.: <b><a href="https://ieeexplore.ieee.org/abstract/document/7785325">Enhanced telemetry for encrypted threat analytics</a></b>, <i>ICNP</i>, 2016.<br />
 <div class="outline-text-5" id="text-orgf8b055f">
 <pre class="example">
 RELEVANCE: unknown
 </pre>
 <p>
-Network performance anomalies (NPAs), e.g. long-tailed latency, bandwidth decline, etc., are increasingly crucial to cloud providers as applications are getting more sensitive to performance. 
-The fundamental difficulty to quickly mitigate NPAs lies in the limitations of state-of-the-art network monitoring solutions --- coarse-grained counters, active probing, or packet telemetry 
-either cannot provide enough insights on flows or incur too much overhead. This paper presents NetSeer, a flow event telemetry (FET) monitor which aims to discover and record 
-all performance-critical data plane events, e.g. 
-packet drops, congestion, path change, and packet pause. NetSeer is efficiently realized on the programmable data plane. 
-It has a high coverage on flow events including inter-switch packet drop/corruption which is critical but also challenging to retrieve the original flow information, 
-with novel intra- and inter-switch event detection algorithms running on data plane; NetSeer also achieves high scalability and accuracy with innovative designs 
-of event aggregation, information compression, and message batching that mainly run on data plane, using switch CPU as complement. NetSeer has been implemented 
-on commodity programmable switches and NICs. With real case studies and extensive experiments, we show NetSeer can reduce NPA mitigation time by 61%-99% with only 0.01% overhead of monitoring traffic.
+Traditional flow monitoring provides a high-level view of network communications by reporting the addresses, ports, and byte and packet counts of a flow. 
+This data is valuable, but it gives little insight into the actual content or context of a flow. 
+To obtain this missing insight, we investigated intra-flow data, that is, information about events that occur inside of a flow that can be conveniently collected, 
+stored, and analyzed within a flow monitoring framework. The focus of our work is on new types of data that are independent of protocol details, such as the 
+lengths and arrival times of messages within a flow. These data elements have the attractive property that they apply equally well to both encrypted and unencrypted flows. 
+Protocol-aware telemetry, specifically TLS-aware telemetry, is also analyzed. In this paper, we explore the benefits of enhanced telemetry, desirable properties of new intra-flow data 
+features with respect to a flow monitoring system, and how best to use machine learning classifiers that operate on this data. We provide results on millions of flows processed by our open source program. 
+Finally, we show that leveraging appropriate data features and simple machine learning models can successfully identify threats in encrypted network traffic.
+</p>
+</div>
+</li>
+
+<li><a id="orgf8b055f"></a>Ponomarev et al.: <b><a href="https://ptolemy0302.github.io/the_telemetry_reading_list/README.html">Industrial Control System Network Intrusion Detection by Telemetry Analysis</a></b>, <i>IEEE TDSC</i>, 2016.<br />
+<div class="outline-text-5" id="text-orgf8b055f">
+<pre class="example">
+RELEVANCE: unknown
+</pre>
+<p>
+Until recently, industrial control systems (ICSs) used “air-gap” security measures, where every node of the ICS network was isolated from other networks, 
+including the Internet, by a physical disconnect. Attaching ICS networks to the Internet benefits companies and engineers who use them. 
+However, as these systems were designed for use in the air-gapped security environment, protocols used by ICSs contain little to no security 
+features and are vulnerable to various attacks. This paper proposes an approach to detect the intrusions into network attached ICSs by measuring 
+and verifying data that is transmitted through the network but is not inherently the data used by the transmission protocol-network telemetry. 
+Using simulated PLC units, the developed IDS was able to achieve 94.3 
+percent accuracy when differentiating between machines of an attacker and engineer on the same network, and 99.5 percent accuracy when differentiating between attacker and engineer on the Internet.
 </p>
 </div>
 </li>
